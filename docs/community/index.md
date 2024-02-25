@@ -1,0 +1,2 @@
+# **Together we hit hard**
+Software development is overhyped. If you believe so, then join me in this wonderful journey where we all create an impact. We will create our own payloads, exploits and tools that will be used worldwide. At <span class="red-command">Red Parrot Docs</span>, you will get anything you aspire for in the field of cybersecurity.

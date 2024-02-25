@@ -1,4 +1,4 @@
-site_name: "QuadHub"
+site_name: "RedParrot"
 site_description: "To be added"
 site_url: "https://localhost:8000"
 
@@ -12,11 +12,19 @@ nav:
     - Prolabs: ctf/HackTheBox/prolabs.md
     - Exams: ctf/HackTheBox/exams.md
   
-- Security: security/index.md
+- School:
+  - school/index.md
+  - Tiers:
+    - Fundamentals: school/Tiers/unixbasics.md 
 
 - DevOps: devops/index.md
 
-- Software Development: development/index.md
+- Web Applications:
+  - webdev/index.md
+  - Tiers:
+    - JavaScript: webdev/Tiers/jsbasics.md 
+
+- News: cybernews/index.md
 
 - Community: community/index.md
 
@@ -24,20 +32,25 @@ theme:
   name: material
   logo: assets/images/logo.svg
   favicon: assets/images/logo.svg
+  custom_dir: overrides
+
+  icon:
+    previous: fontawesome/solid/angle-left
+    next: fontawesome/solid/angle-right
 
   palette:
   - media: "(prefers-color-scheme: dark)"
     scheme: slate
     primary: black
-    accent: lime
+    accent: red
     toggle:
       icon: material/weather-night
       name: Switch to system preference
   
   - media: "(prefers-color-scheme: light)"
     scheme: default
-    primary: teal
-    accent: purple
+    primary: blue grey
+    accent: red
     toggle:
       icon: material/weather-sunny
       name: Switch to dark mode
@@ -68,11 +81,34 @@ theme:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - tables # For adding tables in the documentation
+
+# Attribute lists
   - attr_list
+  - md_in_html
+
+# Emojis
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
+
+# This installs diagrams
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+# Content tabs
+  - pymdownx.tabbed:
+      alternate_style: true
+
+## More readable anchor tags
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
 
 extra_css:
   - https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css
@@ -80,3 +116,7 @@ extra_css:
   - https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css
   - https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css
   - https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css
+  - global.css
+
+extra:
+  generator: false
