@@ -1,0 +1,82 @@
+site_name: "QuadHub"
+site_description: "To be added"
+site_url: "https://localhost:8000"
+
+nav:
+- Home: index.md
+
+- CTF:
+  - ctf/index.md
+  - HackTheBox:
+    - Machines: ctf/HackTheBox/machines.md
+    - Prolabs: ctf/HackTheBox/prolabs.md
+    - Exams: ctf/HackTheBox/exams.md
+  
+- Security: security/index.md
+
+- DevOps: devops/index.md
+
+- Software Development: development/index.md
+
+- Community: community/index.md
+
+theme:
+  name: material
+  logo: assets/images/logo.svg
+  favicon: assets/images/logo.svg
+
+  palette:
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: black
+    accent: lime
+    toggle:
+      icon: material/weather-night
+      name: Switch to system preference
+  
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: teal
+    accent: purple
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to dark mode
+  
+  features:
+
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.footer
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.top
+  
+    - search.highlight
+    - search.suggest
+    - toc.follow
+    - header.autohide
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_css:
+  - https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css
+  - https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css
+  - https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css
+  - https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css
+  - https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css
