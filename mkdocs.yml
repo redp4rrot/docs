@@ -1,6 +1,6 @@
 site_name: "RedParrot"
-site_description: "To be added"
-site_url: "https://localhost:8000"
+site_description: "Everything related to web application security under one roof"
+site_url: "https://quadrupl3d.github.io/redparrot"
 
 nav:
 - Home: index.md
@@ -32,14 +32,13 @@ theme:
   name: material
   logo: assets/images/logo.svg
   favicon: assets/images/logo.svg
-  custom_dir: overrides
 
   icon:
     previous: fontawesome/solid/angle-left
     next: fontawesome/solid/angle-right
 
   palette:
-  - media: "(prefers-color-scheme: dark)"
+  # - media: "(prefers-color-scheme: dark)"
     scheme: slate
     primary: black
     accent: red
@@ -47,11 +46,12 @@ theme:
       icon: material/weather-night
       name: Switch to system preference
   
-  - media: "(prefers-color-scheme: light)"
-    scheme: default
-    primary: blue grey
-    accent: red
-    toggle:
+  # Uncomment to enable theme change
+  # - media: "(prefers-color-scheme: light)"
+  #   scheme: default
+  #   primary: blue grey
+  #   accent: red
+  #   toggle:
       icon: material/weather-sunny
       name: Switch to dark mode
   
