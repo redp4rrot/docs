@@ -12,8 +12,6 @@ The most crucial power that is needed to become a system administrator is having
 The prompt can be customized using special characters and variables in the shell’s configuration file (.bashrc for the Bash shell).
 You can use tools such as [powerline](https://github.com/powerline/powerline){:target="_blank"}, [bash prompt generator](https://bash-prompt-generator.org/){:target="_blank"} etc. to customize the prompt.
 
-![alt text](/school/Tiers/prompt.png)
-
 ### Getting started
 #### <span class="red-command">General</span>
 1. The shell command is too complex!
@@ -122,3 +120,44 @@ r3d@parrot$ which curl
 <span class="command">locate</span>
 
 <span class="command">find</span>
+
+#### <span class="red-command">File descriptors & Redirections</span>
+What is <span class="red-command">/dev/null</span>?  
+Since everything in the OS is a file. Therefore /dev/null is also a file but with some powers vested in it. `/dev/null` is a special device file on Unix-like operating systems that serves as a virtual black hole for data. Any data written to `/dev/null` is discarded, and any read from it returns an end-of-file (EOF) immediately.
+
+What are <span class="red-command">file descriptors (FD)</span>?  
+File descriptors are integer values that the operating system assigns to open files or I/O resources.  
+
+| FD             | Meaning                          |
+| -----------      | ------------------------------------ |
+| 0     | <span class="red-command">STDIN</span>  |
+| 1    | <span class="red-command">STDOUT</span> |
+| 2     | <span class="red-command">STDERR</span> |
+
+<span class="red-command">
+<span class="red-command">
+
+``` bash
+touch /tmp/err
+ cd ~/../../root
+-bash: cd: /home/winusr/../../root: Permission denied
+```
+
+If the user is not able to navigate to the root directory, then the output is an `STDERR`.  
+Redirection means storing this error somewhere but in real life we don't want to store the error. (Error is different from log)
+Therefore, we want to send this `STDERR` to the linux trash can - `/dev/null`
+
+The below command won't output any error as we're redirecting the error to a file - `/tmp/err`
+```
+cd ~/../../root 2>/tmp/err
+```
+
+```
+cat /tmp/err
+-bash: cd: /home/winusr/../../root: Permission denied
+```
+
+Redirecting the error to the trash can(/dev/null)
+```
+cd ~/../../root 2>/dev/null
+```

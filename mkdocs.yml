@@ -2,8 +2,14 @@ site_name: "RedParrot"
 site_description: "Everything related to web application security under one roof"
 site_url: "https://quadrupl3d.github.io/redparrot"
 
+
+# background color - hsla( 225deg ,15%,14%,1)
+# Header color - hsla(225deg,15%,9%,1)
+
 nav:
-- Home: index.md
+- Home: 
+  - index.md
+
 
 - CTF:
   - ctf/index.md
@@ -30,8 +36,8 @@ nav:
 
 theme:
   name: material
-  logo: assets/images/logo.svg
-  favicon: assets/images/logo.svg
+  logo: assets/images/logo-header.svg
+  favicon: assets/images/logo-bg.svg
 
   icon:
     previous: fontawesome/solid/angle-left

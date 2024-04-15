@@ -4,6 +4,26 @@
 <span class="green-command">
 <span class="green-command">
 
+### <span class="webdev">JavaScript Operators</span>
+
+#### <span class="green-command">Difference between === and ==</span>
+
+### <span class="webdev">JavaScript Arrays</span>
+
+#### <span class="green-command">filter()</span>
+
+#### <span class="green-command">map()</span>
+
+#### <span class="green-command">forEach()</span>
+
+#### <span class="green-command">some()</span>
+
+#### <span class="green-command">flatMap()</span>
+
+#### <span class="green-command">reduce()</span>
+
+
+
 ### <span class="webdev">Practical Concepts about OOP</span>
 Yes you heard that right, its <span class="green-command">OOP(Object Oriented Programming)</span> and not `oops!`.
 

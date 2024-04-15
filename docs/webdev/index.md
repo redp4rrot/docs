@@ -220,4 +220,15 @@ pick 156adcb Task completed
 
 This is opened in the `nano` editor by default. Simply exit and save changes. This completes the rebase assuming there were no merge conflicts. We will dive deeper as the practicality of this module increases.
 
+### <span class="webdev">Using the browser dev tools</span>    
+Even if you know how to develop a software but if you're not a good debugger, then you'll really struggle a lot to find bugs. Usually, in a corporate enterprise codebase, there are thousands of lines of code in one single file. And there are multiple files with the exact same name located in different folders. It won't be anyone's cup of tea to keep more than 8 stacks/threads in their head to find that one bug. A bug has some parameters like - severity, impact, exposure, type etc. The basic steps for debugging anything are:
 
+1. Ask questions from yourself, like - `The request is sent by the APIClient. How the controller is handling this API endpoint? Okay, this endpoint is taking the request body to create an object and then this object is posted to some other handler. Maybe that handler failed processing this object the way its supposed to?`
+2. Reduce the bug exposure instead of finding an alternative way to bypass the bug which is called as a `PATCH`. The patch may fix the bug in some cases but it will really help the bug to hide more deeper in the system, thereby increasing bug exposure.
+3. To debug something, it depends on the type of bug i.e frontend, backend, devops etc. Let's say the bug is in front end feature.
+4. You can simply add a breakpoint in the browser dev tools and then trigger the execution flow. When the control hits the line at which breakpoint is marked, you can simply hover on the variables, functions or anything to see what's really going on. At this point,
+unless you're high on drugs, it is close to impossible for the bug to still hide. 
+
+
+### <span class="webdev">Setting up Aliases</span>
+It makes no sense to write a same long command 100 times to do the exact same thing everytime. This is where aliases come into picture. 
