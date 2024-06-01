@@ -14,21 +14,21 @@ nav:
 - CTF:
   - ctf/index.md
   - HackTheBox:
-    - Machines: ctf/HackTheBox/machines.md
-    - Prolabs: ctf/HackTheBox/prolabs.md
-    - Exams: ctf/HackTheBox/exams.md
+    - Machines: ctf/hackthebox/machines.md
+    - Prolabs: ctf/hackthebox/prolabs.md
+    - Exams: ctf/hackthebox/exams.md
   
 - School:
   - school/index.md
   - Tiers:
-    - Fundamentals: school/Tiers/unixbasics.md 
+    - Fundamentals: school/tiers/unixbasics.md 
 
 - DevOps: devops/index.md
 
 - Web Applications:
   - webdev/index.md
   - Tiers:
-    - JavaScript: webdev/Tiers/jsbasics.md 
+    - JavaScript: webdev/tiers/jsbasics.md 
 
 - News: cybernews/index.md
 
