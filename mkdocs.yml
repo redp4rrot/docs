@@ -22,6 +22,7 @@ nav:
   - school/index.md
   - Tiers:
     - Fundamentals: school/tiers/unixbasics.md 
+    - Nmap: school/tiers/nmap.md
 
 - DevOps: devops/index.md
 

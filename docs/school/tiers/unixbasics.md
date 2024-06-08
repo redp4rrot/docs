@@ -1,6 +1,6 @@
 # **Fundamentals**
 
-### Control the OS
+## **Control the OS**
 
 !!! quote "Own it"
 
@@ -8,11 +8,11 @@
 
 The most crucial power that is needed to become a system administrator is having the ability to control it as if you really own everything. 
 
-### Prompt description
+## **Prompt description**
 The prompt can be customized using special characters and variables in the shell’s configuration file (.bashrc for the Bash shell).
 You can use tools such as [powerline](https://github.com/powerline/powerline){:target="_blank"}, [bash prompt generator](https://bash-prompt-generator.org/){:target="_blank"} etc. to customize the prompt.
 
-### Getting started
+## **Getting started**
 #### <span class="red-command">General</span>
 1. The shell command is too complex!
 
@@ -160,4 +160,16 @@ cat /tmp/err
 Redirecting the error to the trash can(/dev/null)
 ```
 cd ~/../../root 2>/dev/null
+```
+
+#### <span class="red-command">Setup python virtual environment</span>
+A simple demonstration for creating and activating a python virtual environment.
+``` bash
+python3 -m venv virtualenv
+source virtualenv/bin/activate
+```
+
+Once the virtual environment is activated, we can install all the dependencies within that environment using:
+```
+pip install -r requirements.txt
 ```
