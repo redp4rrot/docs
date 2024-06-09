@@ -104,6 +104,21 @@ This will copy all the files having an extension of `py` from the current workin
 $ cp *.py /var/www/html
 ```
 
+Let's copy a file from Windows 11 to WSL.  
+File name is `red (2).ovpn` and location is `/mnt/c/Users/jayan/Downloads/red (2).ovpn`.
+```
+sudo cp /mnt/c/Users/jayan/Downloads/red (2).ovpn /opt
+```
+
+!!! failure "Command interfering with bash"
+
+    -bash: syntax error near unexpected token `('
+
+We need to escape the space and parentheses with <span class="command">\</span>
+```
+sudo cp /mnt/c/Users/jayan/Downloads/red\ \(2\).ovpn /opt
+```
+
 #### <span class="red-command">Text editors</span>
 <span class="command">vim</span>
 
