@@ -23,6 +23,7 @@ nav:
   - Tiers:
     - Fundamentals: school/tiers/unixbasics.md 
     - Nmap: school/tiers/nmap.md
+    - OS: school/tiers/os.md
 
 - DevOps: devops/index.md
 
@@ -130,3 +131,4 @@ extra:
 
 plugins:
   - glightbox
+  - search
