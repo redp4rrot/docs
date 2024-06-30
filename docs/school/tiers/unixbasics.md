@@ -188,3 +188,25 @@ Once the virtual environment is activated, we can install all the dependencies w
 ```
 pip install -r requirements.txt
 ```
+
+## **Bread and butter**
+### <span class="red-command">grep</span>
+<span class="command">grep</span> - Global regular expression print.  
+<span class="command">-v</span> -  The grep -v flag is used to invert the match in grep. This means that grep -v will output all lines that do not match the specified pattern.
+
+```curl -s https://crt.sh/\?q\=inlanefreight.com\&output\=json | jq . | grep name | cut -d":" -f2 | grep -v "CN=" | awk '{gsub(/\\n/, "\n"); print $0;}' | sort -u```
+
+
+### <span class="red-command">awk</span>
+<span class="command">gsub</span> - Global substitute function.
+
+This part of the awk script uses the `gsub` function to globally substitute `\\n` with a real newline character (`\n`). The double backslash is used to escape the `\n` so that awk interprets it as a literal `\n` rather than a newline character.
+``` bash
+awk '{gsub(/\\n/, "\n"); print $0};' | input.txt
+```
+
+### <span class="red-command">cut</span>
+
+
+### <span class="red-command">sort</span>
+<span class="command">-u</span> - This flag stands for "unique" and tells sort to remove duplicate lines from the output.

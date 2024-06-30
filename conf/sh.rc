@@ -14,7 +14,7 @@ gacm() {
     git add . && git commit -m "$1"
 }
 
-gRH() {
+grh() {
     git rebase -i HEAD~"$1"
 }
 

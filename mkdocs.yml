@@ -24,6 +24,8 @@ nav:
     - Fundamentals: school/tiers/unixbasics.md 
     - Nmap: school/tiers/nmap.md
     - OS: school/tiers/os.md
+    - Footprinting: school/tiers/footprinting.md
+  
 
 - DevOps: devops/index.md
 
