@@ -1,17 +1,24 @@
 # sh.rc - Shell configuration file
+
 alias gb='git branch'
 alias gd='git diff'
 alias gl='git log'
 alias gp='git push'
 alias gpf='git push -f'
+alias redocs=redocs
+alias gacm=gacm
+alias gRH=gRH
 
 gacm() {
     git add . && git commit -m "$1"
 }
 
-alias gacm=gacm
-
 gRH() {
     git rebase -i HEAD~"$1"
 }
-alias gRH=gRH
+
+redocs() {
+    cd /var/www/docs
+    source venv/bin/activate
+    mkdocs serve -a localhost:4444
+}
