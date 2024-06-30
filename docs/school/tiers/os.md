@@ -101,3 +101,15 @@ For this case study, it should be:
 That's it, execute sudo reboot to see the below holy screen.  
 
 
+## **Installing AMD GPU Graphics drivers**  
+1. Install the drivers from [`install-amdgpu`](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/amdgpu-install.html) binary.
+2. Make sure the deb URL contains the `jammy` mirror.
+
+``` bash
+cat /etc/apt/sources.list.d/amdgpu.list
+deb https://repo.radeon.com/amdgpu/6.1.3/ubuntu jammy main
+#deb-src https://repo.radeon.com/amdgpu/6.1.3/ubuntu jammy main
+```
+
+3. `sudo amdgpu-install --usecase=graphics,opencl --vulkan=amdvlk,pro`
+4. `sudo lshw -C display`

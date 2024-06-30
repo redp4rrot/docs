@@ -1,0 +1,17 @@
+# sh.rc - Shell configuration file
+alias gb='git branch'
+alias gd='git diff'
+alias gl='git log'
+alias gp='git push'
+alias gpf='git push -f'
+
+gacm() {
+    git add . && git commit -m "$1"
+}
+
+alias gacm=gacm
+
+gRH() {
+    git rebase -i HEAD~"$1"
+}
+alias gRH=gRH
