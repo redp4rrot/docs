@@ -1,6 +1,7 @@
 # sh.rc - Shell configuration file
 
 alias gb='git branch'
+alias gcom='git checkout origin main'
 alias gd='git diff'
 alias gl='git log'
 alias gp='git push'
