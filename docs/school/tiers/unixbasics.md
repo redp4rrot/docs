@@ -133,8 +133,14 @@ r3d@parrot$ which curl
 ```
 
 <span class="command">locate</span>
+```
+locate mssqlclient.py
+```
 
 <span class="command">find</span>
+```bash
+find / -type f -name mssqlclient.py 2>/dev/null
+```
 
 #### <span class="red-command">File descriptors & Redirections</span>
 What is <span class="red-command">/dev/null</span>?  
@@ -189,6 +195,18 @@ Once the virtual environment is activated, we can install all the dependencies w
 pip install -r requirements.txt
 ```
 
+List all the packages installed in the virtual environment
+```
+pip freeze
+```
+
+If there is a `setup.py` file in the repository (for eg. [`Impacket`](https://github.com/fortra/impacket){target=_blank}), then we have to make the modules accessible within the virtual environment.  
+Use setup.py to install the module into your Python environment. This will ensure that all dependencies and the package itself are correctly set up.
+
+```
+python setup.py install
+```
+
 ## **Bread and butter**
 ### <span class="red-command">grep</span>
 <span class="command">grep</span> - Global regular expression print.  
@@ -196,6 +214,11 @@ pip install -r requirements.txt
 
 ```curl -s https://crt.sh/\?q\=inlanefreight.com\&output\=json | jq . | grep name | cut -d":" -f2 | grep -v "CN=" | awk '{gsub(/\\n/, "\n"); print $0;}' | sort -u```
 
+
+### <span class="red-command">sed</span>
+```bash
+cat /etc/mysql/mysql.conf.d/mysqld.cnf | grep -v '#' | sed -r '/^\s*$/d'
+```
 
 ### <span class="red-command">awk</span>
 <span class="command">gsub</span> - Global substitute function.
@@ -210,3 +233,7 @@ awk '{gsub(/\\n/, "\n"); print $0};' | input.txt
 
 ### <span class="red-command">sort</span>
 <span class="command">-u</span> - This flag stands for "unique" and tells sort to remove duplicate lines from the output.
+
+
+### <span class="red-command">curl</span>
+<span class="command">-I</span> - Only get the HTTP Response headers.  

@@ -258,3 +258,9 @@ The DNS queries are made over the UDP port 53. The TCP port 53 was previously on
 The company's DNS servers are usually more trusted than those from the Internet. So, for example, we could use them to interact with the hosts of the internal network. As another example, we can use TCP port 53 as a source port (<span class="command">--source-port</span>) for our scans. If the administrator uses the firewall to control this port and does not filter IDS/IPS properly, our TCP packets will be trusted and passed through.
 
 <span class="command">--source-port 53</span> - Performs the scans from specified source port.
+
+## **Nmap scrips**
+Find all the nmap scripts that can be used for enumerating an FTP service.
+```
+find / -type f -name ftp* 2>/dev/null | grep scripts
+```
