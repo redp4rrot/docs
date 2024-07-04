@@ -1,0 +1,1546 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Everything related to web application security under one roof">
+      
+      
+      
+        <link rel="canonical" href="https://quadrupl3d.github.io/redparrot/webdev/">
+      
+      
+        <link rel="prev" href="../devops/">
+      
+      
+        <link rel="next" href="tiers/jsbasics/">
+      
+      
+      <link rel="icon" href="../assets/images/logo-bg.svg">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+    
+    
+      
+        <title>Fundamentals - RedParrot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
+    
+      <link rel="stylesheet" href="../global.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fundamentals" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="RedParrot" class="md-header__button md-logo" aria-label="RedParrot" data-md-component="logo">
+      
+  <img src="../assets/images/logo-header.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RedParrot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fundamentals
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href=".." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../ctf/" class="md-tabs__link">
+          
+  
+    
+  
+  CTF
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../school/" class="md-tabs__link">
+          
+  
+    
+  
+  School
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../devops/" class="md-tabs__link">
+        
+  
+    
+  
+  DevOps
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  Web Applications
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cybernews/" class="md-tabs__link">
+        
+  
+    
+  
+  News
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../community/" class="md-tabs__link">
+        
+  
+    
+  
+  Community
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="RedParrot" class="md-nav__button md-logo" aria-label="RedParrot" data-md-component="logo">
+      
+  <img src="../assets/images/logo-header.svg" alt="logo">
+
+    </a>
+    RedParrot
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href=".." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../ctf/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CTF
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CTF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    HackTheBox
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            HackTheBox
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ctf/hackthebox/machines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ctf/hackthebox/prolabs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prolabs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ctf/hackthebox/exams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../school/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    School
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            School
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tiers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tiers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../school/tiers/unixbasics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../school/tiers/nmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../school/tiers/os/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../school/tiers/services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../school/tiers/filetransfers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Transfers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  <span class="md-ellipsis">
+    Web Applications
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Web Applications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tiers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tiers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tiers/jsbasics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JavaScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cybernews/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    News
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../community/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Community
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#coding-style-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coding style guide
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-zen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Zen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vscode-keyboard-shortcuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      VSCode keyboard shortcuts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-and-version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git and version control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Git and version control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone the repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fork-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fork the repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-ssh-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup SSH access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-the-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set the remote
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-new-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add a new remote
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetch-branches-from-a-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fetch branches from a remote
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-local-branches-to-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Push local branches to remote
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commiting-and-pushing-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commiting and pushing changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opening-a-pull-request-pr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opening a Pull Request (PR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-version-control-rebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced version control: Rebase
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-browser-dev-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the browser dev tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up Aliases
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="fundamentals"><strong>Fundamentals</strong></h1>
+<h3 id="coding-style-guide"><span class="webdev">Coding style guide</span></h3>
+<p>What if github never existed?<br />
+ In that case, maintaining a codebase becomes even more challenging as compared to writing code. The style in which linux kernel was written, followed some of its own principles to write good code.
+ <a href="https://www.kernel.org/doc/html/v4.10/process/coding-style.html" target="_blank">Linux kernel coding style</a> is a short document describing the preferred coding style for the linux kernel.</p>
+<ol>
+<li><strong>Verbosity in variable name</strong> - Less is the scope of variable, less verbose it must be. Meaning, keeping variable names short is a good practice if that variable is defined within a fucntion whose scope is less.</li>
+<li>Any code block should’nt have more than 4 indents.</li>
+<li>An empty line depicts the starting of a logic block.</li>
+<li><span class="green-command">Never copy code</span>, even if it is guaranteed to work.</li>
+<li><span class="green-command">Never use</span> terminal as sudo unless required.</li>
+<li>If you have multiple conditions in a <span class="green-command">if</span> or a for loop, then specify each condition in new line. (Increases readability)</li>
+<li>Private functions inside classes <span class="green-command">should start with an underscore _</span></li>
+<li><span class="green-command">Always leave a space</span> after a <span class="green-command">,</span> (Just a programming principle)</li>
+<li>If a function is doing something, its name must be a <span class="green-command">verb</span>. For example, if a function is creating a 3D geometry in space then its name should be something like createGeometry().</li>
+<li>Variable names <span class="green-command">must be easy to pronounce</span>.</li>
+<li>Any functions that are private but visible outside should start with _ so that anyone trying to call it will know it is a private method and cannot be used from outside. </li>
+<li>If the function is not visible outside and is only defined in the local scope then it need not have <span class="green-command">_</span>.</li>
+<li>Logical operations should be in one block, means, Always leave a space after a logical block.</li>
+<li>Don’t use a variable that is not passed to a function. For example, using global variables within a function without passing them to the function.</li>
+<li>Each function should not be more than 30 lines, thereby decreasing the Bug Exposure.</li>
+<li><span class="green-command">No trailing whitespaces</span> should be present.</li>
+<li>Array variable names <span class="green-command">should end with</span> an <span class="green-command">s</span> to indicate that the variable is a collection.</li>
+<li>Transient variables <span class="green-command">should have a block scope</span>. Therefore, declare the transient variables using let because let has a block scope.</li>
+<li><span class="green-command">var</span> has a stronger scope as compared to <span class="green-command">let</span>.</li>
+</ol>
+<h3 id="python-zen"><span class="webdev">Python Zen</span></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">this</span>
+</code></pre></div>
+<details class="tip">
+<summary>The Zen of Python, by Tim Peters</summary>
+<p>Beautiful is better than ugly.<br>
+Simple is better than complex.<br>
+Complex is better than complicated.<br>
+Flat is better than nested.<br>
+Sparse is better than dense.<br>
+Readability counts.<br>
+Special cases aren't special enough to break the rules.<br>
+Although practicality beats purity.<br>
+Errors should never pass silently.<br>
+Unless explicitly silenced.<br>
+In the face of ambiguity, refuse the temptation to guess.<br>
+There should be one-- and preferably only one --obvious way to do it.<br>
+Although that way may not be obvious at first unless you're Dutch.<br>
+Now is better than never.<br>
+Although never is often better than <em>right</em> now.<br>
+If the implementation is hard to explain, it's a bad idea.<br>
+If the implementation is easy to explain, it may be a good idea.<br>
+Namespaces are one honking great idea -- let's do more of those!<br></p>
+</details>
+<h3 id="vscode-keyboard-shortcuts"><span class="webdev">VSCode keyboard shortcuts</span></h3>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fn + F2</strong></td>
+<td>Click on any word and press fn + F2 to rename that word in all instances of it.</td>
+</tr>
+<tr>
+<td><strong>Hold ALT</strong></td>
+<td>Hold the Alt key and now if you click on different words (one by one), then you will be able to edit multiple words using a single  cursor.</td>
+</tr>
+<tr>
+<td><strong>SHIFT + TAB</strong></td>
+<td>move the selected code block by one indent back.</td>
+</tr>
+<tr>
+<td><strong>Fn + F12</strong></td>
+<td>Click on a function once and press fn + F12 to see the function definition.</td>
+</tr>
+<tr>
+<td><strong>CTRL + Y</strong></td>
+<td>Redo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Descriptive but handy tricks</strong><br />
+Move the line downwards:<br />
+1. Place the cursor anywhere in the desired line.<br />
+2. Press and <strong>hold</strong> the <strong>ALT</strong> key.<br />
+3. Press the down key if you want to move the line below, for example moving line number 12 to line number 13.</p>
+<h3 id="git-and-version-control"><span class="webdev">Git and version control</span></h3>
+<p>Your Github username - <code>Parrot</code>  <br />
+Role - Software developer intern at RedParrotHQ <br />
+Task - Set up SSH access to your dev machine, fork the <code>redparrot</code> repository (this is a private repository) and submit a PR.<br />
+The RedParrot's project repository URL is <code>https://github.com/RedParrotHQ/redparrot.git</code>. Since you're a software developer and you are requested to submit a PR but you don't have write access to this repository because you're just an intern, assuming you don't know about fundamental software development principles.</p>
+<h4 id="clone-the-repository"><span class="green-command">Clone the repository</span></h4>
+<p>First things first, you have to clone the repository to your local machine and for that you need <code>Read</code> permissions on the remote repository - <code>https://github.com/RedParrotHQ/redparrot.git</code>. Therefore, an admin of RedParrotHQ has invited you to join the organization.<br />
+<div class="highlight"><pre><span></span><code>git clone git@github.com:RedParrotHQ/redparrot.git .
+</code></pre></div>
+This should download the repository to your current working directory through SSH (since we've used the SSH url)</p>
+<h4 id="fork-the-repository"><span class="green-command">Fork the repository</span></h4>
+<p>The <code>redparrot</code> repository is not forked yet. Once you fork the repository, you'll be able to see the repository at:<br />
+<code>https://github.com/Parrot/redparrot.git</code></p>
+<h4 id="setup-ssh-access"><span class="green-command">Setup SSH access</span></h4>
+<p>In order to setup tracking between your cloned repository with your forked repository. You need write access to your fork using github CLI.
+For that, setup SSH access to your github account using ssh keys.</p>
+<p>Generate SSH keys if you're booting in your system for the first time.<br />
+<div class="highlight"><pre><span></span><code>ssh-keygen -t rsa -b 4096 -C &quot;Parrot@redparrot.in&quot;
+</code></pre></div>
+By default ssh keys are located at <span class="green-command">~/.ssh/</span>. Let's say your public key is located at <span class="green-command">~/.ssh/id_rsa.pub</span> and the private key at <span class="green-command">~/.ssh/id_rsa</span>. Once the keys are generated, the public key needs to be added to your github account under-<br />
+<span class="green-command">Settings &gt; SSH and GPG keys &gt; New SSH key</span></p>
+<p>Test if you can access your github account through the CLI.<br />
+<div class="highlight"><pre><span></span><code>$ ssh -T git@github.com
+Hi Parrot! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+</code></pre></div></p>
+<h4 id="set-the-remote"><span class="green-command">Set the remote</span></h4>
+<p>Now you can control and update your fork through CLI. First, try to check the existing remotes.
+<em>A remote is a unique name which represents a repository through a URL</em>. For instance, origin refers to your own fork. You can push any peice of code to your fork.</p>
+<div class="highlight"><pre><span></span><code>$ git remote -v
+origin  git@github.com:Parrot/redparrot.git (fetch)
+origin  git@github.com:Parrot/redparrot.git (push)
+</code></pre></div>
+<p>Let's say you own a second github account (username: Parrot2) and you want your <code>origin</code> to point to Parrot2's fork. Here's how to do it. 
+<div class="highlight"><pre><span></span><code>git remote set-url origin https://github.com/Parrot2/redparrot.git
+</code></pre></div></p>
+<h4 id="add-a-new-remote"><span class="green-command">Add a new remote</span></h4>
+<p>What if you want to fetch a branch called <code>beta</code> from the <code>RedParrotHQ/redparrot</code> repo and push changes on top of it?
+To accomplish this, we've to set RedParrotHQ as a remote that will point to the organisation's private repository.
+<div class="highlight"><pre><span></span><code>git remote add RedParrotHQ git@github.com:RedParrotHQ/redparrot.git
+</code></pre></div></p>
+<h4 id="fetch-branches-from-a-remote"><span class="green-command">Fetch branches from a remote</span></h4>
+<p>Fetching branch <code>beta</code> from RedParrotHQ
+<div class="highlight"><pre><span></span><code>git fetch RedParrotHQ beta
+git checkout beta
+</code></pre></div></p>
+<h4 id="push-local-branches-to-remote"><span class="green-command">Push local branches to remote</span></h4>
+<p>Now that you have the <code>beta</code> branch on your local machine, the next step is to push this branch to your fork.(origin)
+Next, set the upstream branch as <code>origin/beta</code> for tracking any changes that will be made to <code>beta</code> branch in future.
+<div class="highlight"><pre><span></span><code>git push origin beta
+git push --set-upstream origin beta
+</code></pre></div></p>
+<h4 id="commiting-and-pushing-changes"><span class="green-command">Commiting and pushing changes</span></h4>
+<p>This is where everything clicks together. Submitting a PR.</p>
+<div class="highlight"><pre><span></span><code>git checkout master
+git checkout -b task
+git push origin task
+git push --set-upstream origin task
+git add .
+git commit -m &#39;Task completed&#39;
+git push
+</code></pre></div>
+<h4 id="opening-a-pull-request-pr"><span class="green-command">Opening a Pull Request (PR)</span></h4>
+<p>This is the only thing that you are supposed to do using the GitHub GUI.</p>
+<h4 id="advanced-version-control-rebase"><span class="green-command">Advanced version control: Rebase</span></h4>
+<p>Role - Software developer intern at RedParrotHQ <br />
+Task - The master branch went 7 commits ahead when you were learning how to submit your first PR. You are requested to push your commit on top of the latest master branch and update the PR.</p>
+<p>What is <span class="green-command">rebase</span>?<br />
+Referring to the current context, when you are making commits to your fork, the master branch was updated(means it had some merges). This would result in something like:  </p>
+<div class="admonition info">
+<p class="admonition-title">Sync Fork</p>
+<p>This branch is 7 commits behind RedParrotHQ/redparrot:master.</p>
+</div>
+<p>To update the master branch at your fork(<code>https://github.com/Parrot/redparrot.git</code>), simply <code>Sync Fork</code> to sync the fork with RedParrotHQ's master.<br />
+Next, you've to update the local branch:
+<div class="highlight"><pre><span></span><code>git checkout master
+git pull
+</code></pre></div></p>
+<p>Now checkout the <code>task</code> branch, which needs to be rebased.
+<div class="highlight"><pre><span></span><code>git checkout task
+</code></pre></div></p>
+<p>Performing rebase on branch <code>task</code>
+<div class="highlight"><pre><span></span><code>git rebase -i master
+</code></pre></div>
+<span class="green-command">-i</span> refers to the interactive rebase.</p>
+<p>You'll see something like this:
+<div class="highlight"><pre><span></span><code>pick 156adcb Task completed
+
+# Rebase abc5d8..156adcb onto afbd5d9 (1 command)
+#
+# Commands:
+# p, pick &lt;commit&gt; = use commit
+# r, reword &lt;commit&gt; = use commit, but edit the commit message
+# e, edit &lt;commit&gt; = use commit, but stop for amending
+# s, squash &lt;commit&gt; = use commit, but meld into previous commit
+# f, fixup [-C | -c] &lt;commit&gt; = like &quot;squash&quot; but keep only the previous
+#                    commit&#39;s log message, unless -C is used, in which case
+#                    keep only this commit&#39;s message; -c is same as -C but
+#                    opens the editor
+# x, exec &lt;command&gt; = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with &#39;git rebase --continue&#39;)
+# d, drop &lt;commit&gt; = remove commit
+# l, label &lt;label&gt; = label current HEAD with a name
+# t, reset &lt;label&gt; = reset HEAD to a label
+# m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]
+# .       create a merge commit using the original merge commit&#39;s
+# .       message (or the oneline, if no original merge commit was
+# .       specified); use -c &lt;commit&gt; to reword the commit message
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">VSCode plugins</p>
+<p>VSCode Extension - <span class="green-command">Git graph</span><br />
+View a Git Graph of your repository, and perform Git actions from the graph.</p>
+</div>
+<p>This is opened in the <code>nano</code> editor by default. Simply exit and save changes. This completes the rebase assuming there were no merge conflicts. We will dive deeper as the practicality of this module increases.</p>
+<h3 id="using-the-browser-dev-tools"><span class="webdev">Using the browser dev tools</span></h3>
+<p>Even if you know how to develop a software but if you're not a good debugger, then you'll really struggle a lot to find bugs. Usually, in a corporate enterprise codebase, there are thousands of lines of code in one single file. And there are multiple files with the exact same name located in different folders. It won't be anyone's cup of tea to keep more than 8 stacks/threads in their head to find that one bug. A bug has some parameters like - severity, impact, exposure, type etc. The basic steps for debugging anything are:</p>
+<ol>
+<li>Ask questions from yourself, like - <code>The request is sent by the APIClient. How the controller is handling this API endpoint? Okay, this endpoint is taking the request body to create an object and then this object is posted to some other handler. Maybe that handler failed processing this object the way its supposed to?</code></li>
+<li>Reduce the bug exposure instead of finding an alternative way to bypass the bug which is called as a <code>PATCH</code>. The patch may fix the bug in some cases but it will really help the bug to hide more deeper in the system, thereby increasing bug exposure.</li>
+<li>To debug something, it depends on the type of bug i.e frontend, backend, devops etc. Let's say the bug is in front end feature.</li>
+<li>You can simply add a breakpoint in the browser dev tools and then trigger the execution flow. When the control hits the line at which breakpoint is marked, you can simply hover on the variables, functions or anything to see what's really going on. At this point,
+unless you're high on drugs, it is close to impossible for the bug to still hide. </li>
+</ol>
+<h3 id="setting-up-aliases"><span class="webdev">Setting up Aliases</span></h3>
+<p>It makes no sense to write a same long command 100 times to do the exact same thing everytime. This is where aliases come into picture. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../devops/" class="md-footer__link md-footer__link--prev" aria-label="Previous: DevOps">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                DevOps
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="tiers/jsbasics/" class="md-footer__link md-footer__link--next" aria-label="Next: JavaScript">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                JavaScript
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.instant", "navigation.instant.prefetch", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "search.highlight", "search.suggest", "toc.follow", "header.autohide"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

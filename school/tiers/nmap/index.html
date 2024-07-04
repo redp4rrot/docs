@@ -1,0 +1,1861 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Everything related to web application security under one roof">
+      
+      
+      
+        <link rel="canonical" href="https://quadrupl3d.github.io/redparrot/school/tiers/nmap/">
+      
+      
+        <link rel="prev" href="../unixbasics/">
+      
+      
+        <link rel="next" href="../os/">
+      
+      
+      <link rel="icon" href="../../../assets/images/logo-bg.svg">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+    
+    
+      
+        <title>Nmap - RedParrot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
+    
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
+    
+      <link rel="stylesheet" href="../../../global.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nmap-network-mapper" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="RedParrot" class="md-header__button md-logo" aria-label="RedParrot" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo-header.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RedParrot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Nmap
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ctf/" class="md-tabs__link">
+          
+  
+    
+  
+  CTF
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  School
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../devops/" class="md-tabs__link">
+        
+  
+    
+  
+  DevOps
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../webdev/" class="md-tabs__link">
+          
+  
+    
+  
+  Web Applications
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cybernews/" class="md-tabs__link">
+        
+  
+    
+  
+  News
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../community/" class="md-tabs__link">
+        
+  
+    
+  
+  Community
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="RedParrot" class="md-nav__button md-logo" aria-label="RedParrot" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo-header.svg" alt="logo">
+
+    </a>
+    RedParrot
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ctf/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CTF
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CTF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    HackTheBox
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            HackTheBox
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ctf/hackthebox/machines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ctf/hackthebox/prolabs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prolabs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ctf/hackthebox/exams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    School
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            School
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tiers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tiers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unixbasics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Nmap
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Nmap
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handy-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handy Flags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discovering-hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discovering Hosts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discovering Hosts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packet-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packet trace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-arp-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disable ARP requests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hosts-and-port-scanning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hosts and Port Scanning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hosts and Port Scanning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discovering-open-tcp-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discovering open TCP ports
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packet-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packet Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-connect-scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP Connect Scan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udp-port-scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      UDP Port Scan
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documenting-the-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documenting the results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-interation-with-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Interation with a Service
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nse" class="md-nav__link">
+    <span class="md-ellipsis">
+      NSE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NSE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aggressive-scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggressive Scan
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#firewall-evasion-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firewall Evasion methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmap-scrips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nmap scrips
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../os/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filetransfers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Transfers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../webdev/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Web Applications
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Web Applications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tiers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tiers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../webdev/tiers/jsbasics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JavaScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cybernews/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    News
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Community
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handy-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handy Flags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discovering-hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discovering Hosts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discovering Hosts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packet-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packet trace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-arp-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disable ARP requests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hosts-and-port-scanning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hosts and Port Scanning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hosts and Port Scanning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discovering-open-tcp-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discovering open TCP ports
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packet-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packet Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-connect-scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP Connect Scan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udp-port-scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      UDP Port Scan
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documenting-the-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documenting the results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-interation-with-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Interation with a Service
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nse" class="md-nav__link">
+    <span class="md-ellipsis">
+      NSE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NSE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aggressive-scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggressive Scan
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#firewall-evasion-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firewall Evasion methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmap-scrips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nmap scrips
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="nmap-network-mapper"><strong>Nmap (Network mapper)</strong></h1>
+<h2 id="introduction"><strong>Introduction</strong></h2>
+<p><span class="red-command">How does a TCP three-way handshake is established?</span><br />
+When you want to talk to someone on the phone, you pick up the phone and dial the number, the receiver picks up the ringing phone not knowing who the caller is and says “Hello?,” the original caller then introduces himself by saying “Hi, this is John!” In response to this, the original receiver will often acknowledge the caller by saying “Oh, hi John!” At this point both people have enough information for the conversation to continue as normal.</p>
+<p>Computers work much the same way. When two computers want to talk, they go through a similar process. The first computer connects to the second computer by sending a SYN packet to a specified port number. If the second computer is listening, it will respond with a SYN/ACK. When the first computer receives the SYN/ACK, it replies with an ACK packet. At this point, the two machines can communicate normally. In our phone example above, the original dialer is like sending the SYN packet. The receiver picking up the phone and saying “Hello?” is like the SYN/ACK packet and the original caller introducing himself is like the ACK packet.</p>
+<p>Let's understand it with the help of an example:<br />
+This is the scan report of a target network/host.
+<div class="highlight"><pre><span></span><code>PORT      STATE SERVICE     VERSION
+22/tcp    open  ssh         OpenSSH 7.6p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0)
+80/tcp    open  http        Apache httpd 2.4.29 ((Ubuntu))
+110/tcp   open  pop3        Dovecot pop3d
+139/tcp   open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+143/tcp   open  imap        Dovecot imapd (Ubuntu)
+445/tcp   open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+31337/tcp open  Elite?
+</code></pre></div></p>
+<p>Let's say our machine wants to connect to port 445 via TCP.<br />
+Before sending the connection request to the host, we would want to see all the incoming and outgoing network packets that will be exchanged between the target network and our machine.<br />
+Listening for network traffic on specified hosts with <span class="command">tcpdump</span></p>
+<div class="highlight"><pre><span></span><code>sudo tcpdump -i wlan0 host &lt;TARGET_IP&gt; and &lt;DEV_MACHINE&gt;
+</code></pre></div>
+<p>Sending the connection request via <span class="command">netcat</span> to PORT 445 which runs a netbios-ssn.  </p>
+<p><a class="glightbox" href="../img/nmap/tcpsend.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="send connection request via netcat" src="../img/nmap/tcpsend.png" /></a></p>
+<p><a class="glightbox" href="../img/nmap/tcpconnect.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Connected via TCP on port 445 to the target host" src="../img/nmap/tcpconnect.png" /></a></p>
+<p><span class="red-command">Understanding the network traffic</span><br />
+<span class="command">Flags [S]</span> - Network packet with a SYN flag set in the TCP headers.<br />
+<span class="command">Flags [S.]</span> - Network packet with a SYN-ACK flag set in the TCP headers.<br />
+<span class="command">Flags [.]</span> - Network packet with a ACK flag set in the TCP headers.  </p>
+<p>SYN - Synchronize<br />
+ACK - Acknowledgement </p>
+<p><span class="red-command">"Enumeration is the key"</span><br />
+The default scan setting of nmap is a TCP-SYN scan (-sS). (scan speed ~ thousand ports/second). 
+The TCP-SYN scan sends one packet with the SYN flag and, therefore, never completes the three-way handshake, which results in not establishing a full TCP connection to the scanned port.</p>
+<p>Packet flow for a TCP-SYN scan:<br />
+1. nmap sends a TCP packet with a SYN flag to a port under scanning.<br />
+2. If the target sends a TCP packet with a ACK flag back to the port =&gt; <span class="red-command">open</span><br />
+3. If the target sends a TCP packet with a RST flag back to the port =&gt; <span class="red-command">closed</span><br />
+4. If the target drops the incoming packets =&gt; <span class="red-command">filtered</span> and a strong firewall is in place.</p>
+<h3 id="handy-flags"><span class="red-command">Handy Flags</span></h3>
+<p>Lets remember some of the most common flags passed to nmap.  </p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="command">-sS</span></td>
+<td>Default nmap scan, TCP-SYN</td>
+</tr>
+<tr>
+<td><span class="command">-sT</span></td>
+<td>TCP Connect scan (stealthy for port scanning)</td>
+</tr>
+<tr>
+<td><span class="command">-n</span></td>
+<td>Don't perform DNS lookups on the IP address, which makes the connection faster because it directly uses the provided IP address.</td>
+</tr>
+<tr>
+<td><span class="command">-Pn</span></td>
+<td>Disable ICMP Echo requests</td>
+</tr>
+<tr>
+<td><span class="command">-PE</span></td>
+<td>Enable ICMP Echo requests (Useful in host discovery)</td>
+</tr>
+<tr>
+<td><span class="command">-sn</span></td>
+<td>Disable port scanning (Useful in host discovery)</td>
+</tr>
+<tr>
+<td><span class="command">-p 21</span></td>
+<td>Scan port 21</td>
+</tr>
+<tr>
+<td><span class="command">-p-</span></td>
+<td>Scan all ports</td>
+</tr>
+<tr>
+<td><span class="command">-p 21-30</span></td>
+<td>Scan port 21 to 30</td>
+</tr>
+<tr>
+<td><span class="command">-p 21,30</span></td>
+<td>Scan port 21 AND 30</td>
+</tr>
+<tr>
+<td><span class="command">--disable-arp-ping</span></td>
+<td>Disable ARP Ping</td>
+</tr>
+<tr>
+<td><span class="command">--packet-trace</span></td>
+<td>Trace the request and response packets</td>
+</tr>
+<tr>
+<td><span class="command">-sV</span></td>
+<td>Version scan</td>
+</tr>
+<tr>
+<td><span class="command">-oA</span></td>
+<td>Output in all formats</td>
+</tr>
+<tr>
+<td><span class="command">--stats-every=5s</span></td>
+<td>Shows the progress of the scan every 5 seconds.</td>
+</tr>
+<tr>
+<td><span class="command">-v/-vv</span></td>
+<td>Shows us the open ports directly when Nmap detects them</td>
+</tr>
+</tbody>
+</table>
+<h2 id="discovering-hosts"><strong>Discovering Hosts</strong></h2>
+<p>Before we scan a single host for open ports and its services, we first have to determine if it is alive or not.
+For discovering hosts, we need to explicitly disable port scanning through <span class="command">-sn</span> flag. If port scanning is disabled then by default ICMP Echo Requests are sent to the host.<br />
+If the host is alive it will send an ICMP reply.</p>
+<div class="highlight"><pre><span></span><code>sudo nmap 10.10.14.24 -sn -oA host
+</code></pre></div>
+<h3 id="packet-trace"><span class="red-command">Packet trace</span></h3>
+<p><span class="command">-PE</span> - Performs the ping scan by using 'ICMP Echo requests' against the target.<br />
+<span class="command">--packet-trace</span> - Tells nmap to trace the request and response packets. 
+<div class="highlight"><pre><span></span><code>sudo nmap 10.10.14.24 -sn -oA host -PE --packet-trace
+</code></pre></div></p>
+<h3 id="disable-arp-requests"><span class="red-command">Disable ARP requests</span></h3>
+<p><span class="command">--disable-arp-ping</span> - Disables ARP requests and scan our target with the desired ICMP echo requests</p>
+<div class="highlight"><pre><span></span><code>sudo nmap 10.10.14.24 -sn -PE --disable-arp-ping -oA nmap/icmpscan
+</code></pre></div>
+<p>ICMP echo request can help us determine if our target is alive and identify its system.</p>
+<h2 id="hosts-and-port-scanning"><strong>Hosts and Port Scanning</strong></h2>
+<h3 id="discovering-open-tcp-ports"><span class="red-command">Discovering open TCP ports</span></h3>
+<p><span class="command">-p 80, 445</span> - only scans port 80 and 445.<br />
+<span class="command">--top-ports=10</span> -  top ports from the Nmap database that have been signed as most frequent.<br />
+<span class="command">-p 80-443</span> - scan all the ports lying in range 80 to 443.<br />
+<span class="command">-F</span> - perform a fast scan by only scanning top 100 ports.<br />
+<span class="command">-p-</span> - scan all the ports.  </p>
+<h3 id="packet-analysis"><span class="red-command">Packet Analysis</span></h3>
+<p>Let's scan port 443 via TCP-SYN scan.<br />
+<span class="command">-Pn</span> - Disable the ICMP Echo requests.<br />
+<span class="command">-n</span> - Disable DNS resolution.<br />
+<span class="command">--packet-trace</span> - Trace the packets.<br />
+<span class="command">--disable-arp-ping</span> - Disables ARP requests.  </p>
+<div class="highlight"><pre><span></span><code>sudo nmap 10.10.14.24 -p 443 --packet-trace -Pn -n --disable-arp-ping
+</code></pre></div>
+<h3 id="tcp-connect-scan"><span class="red-command">TCP Connect Scan</span></h3>
+<p>The scan sends an SYN packet to the target port and waits for a response. It is considered open if the target port responds with an SYN-ACK packet and closed if it responds with an RST packet.<br />
+The Connect scan is useful because it is the most accurate way to determine the state of a port, and it is also the most stealthy.  </p>
+<div class="highlight"><pre><span></span><code>sudo nmap 10.10.14.24 -p 80 --packet-trace --disable-arp-ping -Pn -n --reason -sT 
+</code></pre></div>
+<h3 id="udp-port-scan"><span class="red-command">UDP Port Scan</span></h3>
+<p>This will only scan top 100 ports.
+<div class="highlight"><pre><span></span><code>sudo nmap 10.10.14.24 -F -sU -oA nmap/udpscan
+</code></pre></div>
+To scan all the UDP ports:
+<div class="highlight"><pre><span></span><code>sudo nmap 10.10.14.24 -sU -oA nmap/alludpports
+</code></pre></div></p>
+<h2 id="documenting-the-results"><strong>Documenting the results</strong></h2>
+<p>When running nmap, get the nmap output in all formats via <span class="command">-oA</span> flag. Once done, we can convert the <code>output.xml</code> file to <code>output.html</code> via <code>xsltproc</code>.<br />
+<div class="highlight"><pre><span></span><code>xsltproc output.xml -o output.html
+</code></pre></div></p>
+<h2 id="manual-interation-with-a-service"><strong>Manual Interation with a Service</strong></h2>
+<details class="question">
+<summary>Question</summary>
+<p>Manually interact with all the ports and services</p>
+</details>
+<p>First, scan the given host for all open ports and services.  </p>
+<div class="admonition note">
+<p class="admonition-title">Scan doesn't need to be always rigorous</p>
+<p>We're not forcing nmap to scan for all the ports (<span class="command">-p-</span>), by default it will scan top ports.</p>
+</div>
+<div class="highlight"><pre><span></span><code>sudo nmap 10.10.141.20 -sV --disable-arp-ping -Pn -n -oA nmap/services
+
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-06-08 12:25 UTC
+Nmap scan report for 10.69.141.20
+Host is up (0.16s latency).
+Not shown: 993 closed tcp ports (reset)
+PORT      STATE SERVICE     VERSION
+22/tcp    open  ssh         OpenSSH 7.6p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0)
+80/tcp    open  http        Apache httpd 2.4.29 ((Ubuntu))
+110/tcp   open  pop3        Dovecot pop3d
+139/tcp   open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+143/tcp   open  imap        Dovecot imapd (Ubuntu)
+445/tcp   open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+31337/tcp open  Elite?
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port31337-TCP:V=7.94SVN%I=7%D=6/8%Time=66644DDE%P=x86_64-pc-linux-gnu%r
+SF:(GetRequest,1F,&quot;220\x20{Hello senior}\r\n&quot;);
+Service Info: Host: RP-DEFAULT; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 172.59 seconds 
+</code></pre></div>
+<p>Setting up <span class="command">tcpdump</span> to listen for incoming and outgoing network packets.</p>
+<p><div class="highlight"><pre><span></span><code>sudo tcpdump -i wlan0 host 10.10.20.14 and 10.69.141.20
+</code></pre></div>
+<a class="glightbox" href="../img/nmap/tcpdump.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="listen for network traffic" src="../img/nmap/tcpdump.png" /></a></p>
+<p>To interact with any port, we can use netcat to establish a connection with the port.</p>
+<p><span class="command">nc</span> - netcat<br />
+<span class="command">-n</span> - Disable DNS resolution (makes the connection faster)<br />
+<span class="command">-v</span> - Verbose (Tells about the connection details)</p>
+<p><a class="glightbox" href="../img/nmap/netcat.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="connect to a service" src="../img/nmap/netcat.png" /></a></p>
+<h2 id="nse"><strong>NSE</strong></h2>
+<p>Nmap's Scripting Engine(NSE) is a powerful feature of the Nmap network scanning tool that extends its capabilities by using scripts. These scripts can automate a wide range of tasks, from advanced version detection to vulnerability detection and exploitation. The scripts are written in the Lua programming language and can be found in the Nmap Scripting Engine's script repository.</p>
+<p>Using nmap's default scripts to scan the target network.
+<div class="highlight"><pre><span></span><code>sudo nmap 10.10.14.24 -sC
+</code></pre></div></p>
+<p>Using a specific script category
+<div class="highlight"><pre><span></span><code>sudo nmap 10.10.14.24 --script &lt;category&gt;
+</code></pre></div></p>
+<p>Using defined scripts
+<div class="highlight"><pre><span></span><code>sudo nmap &lt;target&gt; --script &lt;script-name&gt;,&lt;script-name&gt;,...
+</code></pre></div></p>
+<h3 id="aggressive-scan"><span class="red-command">Aggressive Scan</span></h3>
+<p><span class="command">-A</span> - Performs service detection, OS detection, traceroute and uses defaults scripts to scan the target.<br />
+Let's perform an aggressive scan on port 80 with nmap's default scripts.</p>
+<div class="highlight"><pre><span></span><code>sudo nmap 10.10.14.24 -p 80 -A 
+</code></pre></div>
+<h2 id="performance"><strong>Performance</strong></h2>
+<p>Good but may miss some ports and hosts while scanning.</p>
+<h2 id="lab"><strong>Lab</strong></h2>
+<p>What happens if an IDS and IPS is in place?<br />
+What happens if there is no chance of interacting with the host to discover open ports, services running on them?  </p>
+<details class="quote" open="open">
+<summary>Quote</summary>
+<p>When the WAF says 'No', let your determination say 'Yes'. Every denial is just a disguised invitation to dig deeper</p>
+</details>
+<h3 id="firewall-evasion-methods"><span class="red-command">Firewall Evasion methods</span></h3>
+<p><span class="red-command">METHOD-1 : The Decoy scanning method  </span><br />
+<span class="command">-D</span> - The Decoy scanning method<br />
+Decoy scanning helps to mask the actual source of the scan by including additional IP addresses in the scan request. This can confuse the target system's logging and alerting mechanisms by making it appear as though the scan is coming from multiple sources rather than a single one.<br />
+Decoys can be used for SYN, ACK, ICMP scans, and OS detection scans</p>
+<p><span class="command">-D RND:4</span> - Generates four random IP addresses that indicates the source IP the connection comes from.<br><br>
+<span class="red-command">METHOD-2 : TCP-ACK scan</span><br />
+How TCP ACK Scanning(<span class="command">-sA</span>) Works?<br />
+Sending TCP ACK Packets: The scanner sends TCP packets with the ACK flag set to the target host. The ACK flag is used in the TCP protocol to acknowledge the receipt of packets. These packets are sent without establishing a connection (i.e., they are sent without the SYN flag). The packets with the ACK flag are often passed by the firewall because the firewall cannot determine whether the connection was first established from the external network or the internal network.</p>
+<p><strong>Analyzing Responses</strong>:</p>
+<ul>
+<li>
+<p>No Response or ICMP Unreachable: If no response or an ICMP "port unreachable" message is received, it indicates that the port is either filtered (i.e., blocked by a firewall) or that the target is not reachable. </p>
+</li>
+<li>
+<p>RST Packet: If the target responds with a TCP RST (reset) packet, it suggests that the port is unfiltered, which means the firewall is allowing traffic through but there's no service listening on that port.</p>
+</li>
+</ul>
+<p><span class="red-command">unfiltered</span> - This state of a port only occurs during the TCP-ACK scan and means that the port is accessible, but it cannot be determined whether it is open or closed.  </p>
+<p><span class="red-command">METHOD-3 : Scan by Using Different Source IP</span><br />
+<span class="command">-S IP</span> - Scan the host with the source IP as any IP address that lies in the same subnet.</p>
+<p><span class="red-command">METHOD-3 : DNS Proxying</span><br />
+The DNS queries are made over the UDP port 53. The TCP port 53 was previously only used for the so-called "Zone transfers" between the DNS servers or data transfer larger than 512 bytes.<br />
+The company's DNS servers are usually more trusted than those from the Internet. So, for example, we could use them to interact with the hosts of the internal network. As another example, we can use TCP port 53 as a source port (<span class="command">--source-port</span>) for our scans. If the administrator uses the firewall to control this port and does not filter IDS/IPS properly, our TCP packets will be trusted and passed through.</p>
+<p><span class="command">--source-port 53</span> - Performs the scans from specified source port.</p>
+<h2 id="nmap-scrips"><strong>Nmap scrips</strong></h2>
+<p>Find all the nmap scripts that can be used for enumerating an FTP service.
+<div class="highlight"><pre><span></span><code>find / -type f -name ftp* 2&gt;/dev/null | grep scripts
+</code></pre></div></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../unixbasics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Fundamentals">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Fundamentals
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../os/" class="md-footer__link md-footer__link--next" aria-label="Next: OS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                OS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.instant", "navigation.instant.prefetch", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "search.highlight", "search.suggest", "toc.follow", "header.autohide"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
