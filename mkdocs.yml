@@ -25,6 +25,7 @@ nav:
     - Nmap: school/tiers/nmap.md
     - OS: school/tiers/os.md
     - Services: school/tiers/services.md
+    - File Transfers: school/tiers/filetransfers.md
   
 
 - DevOps: devops/index.md

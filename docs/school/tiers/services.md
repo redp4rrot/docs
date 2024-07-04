@@ -85,11 +85,17 @@ Connect to a TLS enabled FTP server
 openssl s_client -connect <server_ip>:21 -starttls ftp
 ```
 
+Connect to an FTP server as a user
+```
+ftp <user>@<server_ip>
+```
+
 ### <span class="red-command">SMB</span>
 Samba server listens on TCP ports `137, 138, 139`, but CIFS uses TCP port `445` only.  
 Configuration file stored at - <code class="invert">/etc/samba/smb.conf</code>
 
 ### <span class="red-command">NFC</span>
+UDP or TCP port `2049` is used to run the service.
 
 
 ### <span class="red-command">DNS</span>
